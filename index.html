@@ -3,169 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Cuenta regresiva</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ background:transparent; font-family:'Montserrat',sans-serif; display:flex; justify-content:center; align-items:center; padding:20px; }
+.container{ text-align:center; }
+h2{ font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; color:#6B7D6A; margin-bottom:30px; }
+.countdown{ display:flex; gap:35px; justify-content:center; flex-wrap:wrap; }
+.item{ min-width:90px; }
+.number{ font-family:'Cormorant Garamond',serif; font-size:64px; color:#333; line-height:1; }
+.label{ margin-top:8px; text-transform:uppercase; letter-spacing:2px; font-size:12px; color:#888; }
+@media(max-width:700px){ .number{ font-size:44px; } .countdown{ gap:18px; } .item{ min-width:65px; } }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* Music button */
+#music-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(107, 125, 106, 0.15);
+  border: 1.5px solid rgba(107, 125, 106, 0.5);
+  color: #6B7D6A;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999;
+  outline: none;
+  box-shadow: 0 4px 18px rgba(107, 125, 106, 0.18);
+}
+#music-btn:hover {
+  background: rgba(107, 125, 106, 0.28);
+  border-color: rgba(107, 125, 106, 0.8);
+  transform: scale(1.07);
+}
+#music-btn:active {
+  transform: scale(0.95);
 }
 
-body{
-
-    background:transparent;
-    font-family:'Montserrat',sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+/* Pulse animation when playing */
+#music-btn.playing {
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(107,125,106,0.35), 0 4px 18px rgba(107,125,106,0.18); }
+  70%  { box-shadow: 0 0 0 10px rgba(107,125,106,0), 0 4px 18px rgba(107,125,106,0.18); }
+  100% { box-shadow: 0 0 0 0 rgba(107,125,106,0), 0 4px 18px rgba(107,125,106,0.18); }
 }
 
-.container{
-
-    text-align:center;
+/* Tooltip hint */
+#music-hint {
+  position: fixed;
+  bottom: 90px;
+  right: 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 1.2px;
+  color: #6B7D6A;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 9998;
 }
-
-h2{
-
-    font-family:'Cormorant Garamond',serif;
-    font-size:32px;
-    font-weight:600;
-    color:#6B7D6A;
-    margin-bottom:30px;
+#music-hint.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-.countdown{
-
-    display:flex;
-    gap:35px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-.item{
-
-    min-width:90px;
-}
-
-.number{
-
-    font-family:'Cormorant Garamond',serif;
-    font-size:64px;
-    color:#333;
-    line-height:1;
-}
-
-.label{
-
-    margin-top:8px;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    font-size:12px;
-    color:#888;
-}
-
-@media(max-width:700px){
-
-.number{
-
-    font-size:44px;
-}
-
-.countdown{
-
-    gap:18px;
-}
-
-.item{
-
-    min-width:65px;
-}
-
-}
-
 </style>
-
 </head>
-
 <body>
 
 <div class="container">
-
-<h2>El tiempo nos trajo hasta aquí.
-Ahora solo falta compartir este día con vos.</h2>
-
-<div class="countdown">
-
-<div class="item">
-<div class="number" id="days">0</div>
-<div class="label">Días</div>
+  <h2>El tiempo nos trajo hasta aquí. Ahora solo falta compartir este día con vos.</h2>
+  <div class="countdown">
+    <div class="item"><div class="number" id="days">132</div><div class="label">Días</div></div>
+    <div class="item"><div class="number" id="hours">22</div><div class="label">Horas</div></div>
+    <div class="item"><div class="number" id="minutes">39</div><div class="label">Minutos</div></div>
+    <div class="item"><div class="number" id="seconds">27</div><div class="label">Segundos</div></div>
+  </div>
 </div>
 
-<div class="item">
-<div class="number" id="hours">0</div>
-<div class="label">Horas</div>
-</div>
+<!-- Music -->
+<audio id="bg-audio" loop preload="auto">
+  <source src="Muse_-_Starlight_(mp3.pm).mp3" type="audio/mpeg">
+</audio>
 
-<div class="item">
-<div class="number" id="minutes">0</div>
-<div class="label">Minutos</div>
-</div>
-
-<div class="item">
-<div class="number" id="seconds">0</div>
-<div class="label">Segundos</div>
-</div>
-
-</div>
-
-</div>
+<!-- Floating music button -->
+<div id="music-hint">Tocá para escuchar</div>
+<button id="music-btn" aria-label="Reproducir música de fondo" title="Música">
+  <!-- Music note icon (SVG inline) -->
+  <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M9 3v12.174A3 3 0 1 0 11 18V7h6V3H9z"/>
+  </svg>
+  <!-- Pause icon (hidden initially) -->
+  <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none;">
+    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+  </svg>
+</button>
 
 <script>
-
+// --- Countdown ---
 const weddingDate = new Date("2026-11-07T17:00:00-03:00");
-
 function updateCountdown(){
-
-const now = new Date();
-
-const diff = weddingDate - now;
-
-if(diff <= 0){
-
-document.querySelector(".container").innerHTML="<h2>¡Llegó el gran día! ❤️</h2>";
-
-return;
-
+  const now = new Date();
+  const diff = weddingDate - now;
+  if(diff <= 0){
+    document.querySelector(".container").innerHTML="<h2>¡Llegó el gran día! ❤️</h2>";
+    return;
+  }
+  const days    = Math.floor(diff / (1000*60*60*24));
+  const hours   = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+  const seconds = Math.floor((diff%(1000*60))/1000);
+  document.getElementById("days").textContent    = days;
+  document.getElementById("hours").textContent   = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
 }
-
-const days = Math.floor(diff / (1000*60*60*24));
-
-const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-
-const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
-
-const seconds = Math.floor((diff%(1000*60))/1000);
-
-document.getElementById("days").textContent = days;
-document.getElementById("hours").textContent = hours;
-document.getElementById("minutes").textContent = minutes;
-document.getElementById("seconds").textContent = seconds;
-
-}
-
 updateCountdown();
+setInterval(updateCountdown, 1000);
 
-setInterval(updateCountdown,1000);
+// --- Music ---
+const audio   = document.getElementById("bg-audio");
+const btn     = document.getElementById("music-btn");
+const iconPlay  = document.getElementById("icon-play");
+const iconPause = document.getElementById("icon-pause");
+const hint    = document.getElementById("music-hint");
 
+let autoplayBlocked = false;
+
+function setPlayingState(playing) {
+  if (playing) {
+    iconPlay.style.display  = "none";
+    iconPause.style.display = "block";
+    btn.classList.add("playing");
+    btn.setAttribute("aria-label", "Pausar música");
+    btn.title = "Pausar";
+    hint.classList.remove("visible");
+  } else {
+    iconPlay.style.display  = "block";
+    iconPause.style.display = "none";
+    btn.classList.remove("playing");
+    btn.setAttribute("aria-label", "Reproducir música");
+    btn.title = "Reproducir";
+  }
+}
+
+// Attempt autoplay on load
+window.addEventListener("load", function () {
+  const playPromise = audio.play();
+  if (playPromise !== undefined) {
+    playPromise.then(function () {
+      // Autoplay succeeded
+      setPlayingState(true);
+    }).catch(function () {
+      // Autoplay blocked — show hint
+      autoplayBlocked = true;
+      setPlayingState(false);
+      hint.classList.add("visible");
+      // Hide hint after 5 seconds
+      setTimeout(function () { hint.classList.remove("visible"); }, 5000);
+    });
+  }
+});
+
+// Toggle on button click
+btn.addEventListener("click", function () {
+  if (audio.paused) {
+    audio.play().then(function () {
+      setPlayingState(true);
+    }).catch(function () {
+      // Still blocked somehow — ignore
+    });
+  } else {
+    audio.pause();
+    setPlayingState(false);
+  }
+});
+
+// Keep icon in sync if audio ends unexpectedly (shouldn't happen with loop)
+audio.addEventListener("play",  function () { setPlayingState(true); });
+audio.addEventListener("pause", function () { setPlayingState(false); });
 </script>
 
 </body>
