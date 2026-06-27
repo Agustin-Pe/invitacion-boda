@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería — Nosotros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    padding: 40px 24px 60px;
+  }
+
+  .gallery-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .gallery-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: #6B7D6A;
+    margin-bottom: 10px;
+    line-height: 1.1;
+  }
+
+  .gallery-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 36px;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 280px;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  }
+
+  /* Lightbox */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    cursor: zoom-out;
+  }
+
+  #lightbox.active {
+    display: flex;
+  }
+
+  #lightbox-img {
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    cursor: default;
+    animation: lb-in 0.22s ease;
+  }
+
+  @keyframes lb-in {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  #lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 26px;
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    line-height: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    transition: color 0.2s ease, transform 0.2s ease;
+    user-select: none;
+  }
+
+  #lightbox-close:hover {
+    color: #fff;
+    transform: scale(1.15);
+  }
+
+  /* Nav arrows */
+  .lb-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 36px;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    padding: 12px 18px;
+    user-select: none;
+    transition: color 0.2s ease;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .lb-arrow:hover { color: #fff; }
+  #lb-prev { left: 12px; }
+  #lb-next { right: 12px; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .gallery-title { font-size: 36px; }
+    .gallery-grid  { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item  { height: 200px; }
+    .lb-arrow      { font-size: 26px; padding: 8px 12px; }
+    #lightbox-close { font-size: 26px; top: 14px; right: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="gallery-wrapper">
+  <h1 class="gallery-title">Nosotros</h1>
+  <p class="gallery-subtitle">Algunos de nuestros momentos</p>
+
+  <div class="gallery-grid" id="gallery">
+    <div class="gallery-item" data-index="0">
+      <img src="IMG_7147.jpg" alt="Foto 1">
+    </div>
+    <div class="gallery-item" data-index="1">
+      <img src="IMG_7221.jpg" alt="Foto 2">
+    </div>
+    <div class="gallery-item" data-index="2">
+      <img src="IMG_7231.jpg" alt="Foto 3">
+    </div>
+    <div class="gallery-item" data-index="3">
+      <img src="IMG_7249.jpg" alt="Foto 4">
+    </div>
+    <div class="gallery-item" data-index="4">
+      <img src="IMG_7312.jpg" alt="Foto 5">
+    </div>
+    <div class="gallery-item" data-index="5">
+      <img src="IMG_7330.jpg" alt="Foto 6">
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <span id="lightbox-close" title="Cerrar">&times;</span>
+  <span class="lb-arrow" id="lb-prev" title="Anterior">&#8249;</span>
+  <img id="lightbox-img" src="" alt="Foto ampliada">
+  <span class="lb-arrow" id="lb-next" title="Siguiente">&#8250;</span>
+</div>
+
+<script>
+  (function () {
+    var photos = [
+      'IMG_7147.jpg',
+      'IMG_7221.jpg',
+      'IMG_7231.jpg',
+      'IMG_7249.jpg',
+      'IMG_7312.jpg',
+      'IMG_7330.jpg'
+    ];
+
+    var currentIndex = 0;
+    var lightbox    = document.getElementById('lightbox');
+    var lbImg       = document.getElementById('lightbox-img');
+    var closeBtn    = document.getElementById('lightbox-close');
+    var prevBtn     = document.getElementById('lb-prev');
+    var nextBtn     = document.getElementById('lb-next');
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lbImg.src = photos[currentIndex];
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+      lbImg.src = photos[currentIndex];
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % photos.length;
+      lbImg.src = photos[currentIndex];
+    }
+
+    // Click on grid items
+    document.getElementById('gallery').addEventListener('click', function (e) {
+      var item = e.target.closest('.gallery-item');
+      if (item) {
+        openLightbox(parseInt(item.dataset.index, 10));
+      }
+    });
+
+    // Close on overlay click (but not on image or arrows)
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) { closeLightbox(); }
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    prevBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showPrev();
+    });
+
+    nextBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showNext();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape')      { closeLightbox(); }
+      else if (e.key === 'ArrowLeft')  { showPrev(); }
+      else if (e.key === 'ArrowRight') { showNext(); }
+    });
+  })();
+</script>
+
+</body>
+</html>
