@@ -1,312 +1,174 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Confirmar asistencia</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  body {
-    background: transparent;
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 48px 20px;
-  }
+  <title>Confirmar asistencia</title>
 
-  .container {
-    text-align: center;
-    width: 100%;
-    max-width: 640px;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  .eyebrow {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    color: #888;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400&display=swap"
+    rel="stylesheet"
+  >
 
-  .title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 600;
-    color: #6B7D6A;
-    line-height: 1.15;
-    margin-bottom: 24px;
-  }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .link-aqui {
-    display: inline-block;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 36px;
-    font-weight: 400;
-    color: #333;
-    text-decoration: underline;
-    text-underline-offset: 8px;
-    text-decoration-color: #888;
-    text-decoration-thickness: 1px;
-    cursor: pointer;
-    transition: color 0.25s ease, text-decoration-color 0.25s ease;
-    margin-bottom: 32px;
-  }
-
-  .link-aqui:hover {
-    color: #6B7D6A;
-    text-decoration-color: #6B7D6A;
-  }
-
-  .divider {
-    width: 40px;
-    height: 1px;
-    background: #ccc;
-    margin: 0 auto 32px;
-  }
-
-  .btn-rsvp {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #6B7D6A;
-    background: transparent;
-    border: 1.5px solid #6B7D6A;
-    padding: 12px 28px;
-    border-radius: 3px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.25s ease, color 0.25s ease;
-    margin-bottom: 28px;
-  }
-
-  .btn-rsvp:hover {
-    background: #6B7D6A;
-    color: #fff;
-  }
-
-  .deadline {
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    color: #888;
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
-
-  @media (max-width: 600px) {
     body {
-      padding: 36px 16px;
-      align-items: flex-start;
+      background: transparent;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 48px 20px;
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      max-width: 640px;
     }
 
     .eyebrow {
-      font-size: 10px;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: #888;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
     .title {
-      font-size: 36px;
-      margin-bottom: 18px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 600;
+      color: #6B7D6A;
+      line-height: 1.15;
+      margin-bottom: 24px;
     }
 
     .link-aqui {
-      font-size: 28px;
-      margin-bottom: 26px;
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 36px;
+      font-weight: 400;
+      color: #333;
+      text-decoration: underline;
+      text-underline-offset: 8px;
+      text-decoration-color: #888;
+      text-decoration-thickness: 1px;
+      cursor: pointer;
+      transition:
+        color 0.25s ease,
+        text-decoration-color 0.25s ease;
+      margin-bottom: 32px;
+    }
+
+    .link-aqui:hover {
+      color: #6B7D6A;
+      text-decoration-color: #6B7D6A;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: #ccc;
+      margin: 0 auto 32px;
     }
 
     .btn-rsvp {
-      font-size: 10px;
-      padding: 10px 22px;
-      margin-bottom: 22px;
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #6B7D6A;
+      background: transparent;
+      border: 1.5px solid #6B7D6A;
+      padding: 12px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      cursor: pointer;
+      transition:
+        background 0.25s ease,
+        color 0.25s ease;
+      margin-bottom: 28px;
+    }
+
+    .btn-rsvp:hover {
+      background: #6B7D6A;
+      color: #fff;
     }
 
     .deadline {
-      font-size: 10px;
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: #888;
+      letter-spacing: 1px;
+      margin-top: 4px;
     }
-  }
-</style>
+
+    @media (max-width: 600px) {
+      body {
+        padding: 36px 16px;
+        align-items: flex-start;
+      }
+
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+      }
+
+      .title {
+        font-size: 36px;
+        margin-bottom: 18px;
+      }
+
+      .link-aqui {
+        font-size: 28px;
+        margin-bottom: 26px;
+      }
+
+      .btn-rsvp {
+        font-size: 10px;
+        padding: 10px 22px;
+        margin-bottom: 22px;
+      }
+
+      .deadline {
+        font-size: 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div class="container">
+
     <p class="eyebrow">¿Nos acompañás?</p>
+
     <h2 class="title">Confirmá tu asistencia</h2>
 
     <a
       class="link-aqui"
-      href="<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Confirmar asistencia</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    background: transparent;
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 48px 20px;
-  }
-
-  .container {
-    text-align: center;
-    width: 100%;
-    max-width: 640px;
-  }
-
-  .eyebrow {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    color: #888;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 600;
-    color: #6B7D6A;
-    line-height: 1.15;
-    margin-bottom: 24px;
-  }
-
-  .link-aqui {
-    display: inline-block;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 36px;
-    font-weight: 400;
-    color: #333;
-    text-decoration: underline;
-    text-underline-offset: 8px;
-    text-decoration-color: #888;
-    text-decoration-thickness: 1px;
-    cursor: pointer;
-    transition: color 0.25s ease, text-decoration-color 0.25s ease;
-    margin-bottom: 32px;
-  }
-
-  .link-aqui:hover {
-    color: #6B7D6A;
-    text-decoration-color: #6B7D6A;
-  }
-
-  .divider {
-    width: 40px;
-    height: 1px;
-    background: #ccc;
-    margin: 0 auto 32px;
-  }
-
-  .btn-rsvp {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #6B7D6A;
-    background: transparent;
-    border: 1.5px solid #6B7D6A;
-    padding: 12px 28px;
-    border-radius: 3px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.25s ease, color 0.25s ease;
-    margin-bottom: 28px;
-  }
-
-  .btn-rsvp:hover {
-    background: #6B7D6A;
-    color: #fff;
-  }
-
-  .deadline {
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    color: #888;
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
-
-  @media (max-width: 600px) {
-    body {
-      padding: 36px 16px;
-      align-items: flex-start;
-    }
-
-    .eyebrow {
-      font-size: 10px;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-
-    .title {
-      font-size: 36px;
-      margin-bottom: 18px;
-    }
-
-    .link-aqui {
-      font-size: 28px;
-      margin-bottom: 26px;
-    }
-
-    .btn-rsvp {
-      font-size: 10px;
-      padding: 10px 22px;
-      margin-bottom: 22px;
-    }
-
-    .deadline {
-      font-size: 10px;
-    }
-  }
-</style>
-</head>
-<body>
-  <div class="container">
-    <p class="eyebrow">¿Nos acompañás?</p>
-    <h2 class="title">Confirmá tu asistencia</h2>
-
-    <a
-      class="link-aqui"
-      href="https://docs.google.com/forms/d/1cRC3V6lm6JZN2TNMj02OXxmiq2V3Lr212QyB2DUcYPU/viewform"
+      href="https://docs.google.com/forms/d/15M32yEw1gMr9bUxb0QEXrcQb02RnGXLFoQh3NcQQhWI/viewform"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+    >
       aquí
     </a>
 
@@ -314,204 +176,17 @@
 
     <a
       class="btn-rsvp"
-      href="<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Confirmar asistencia</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    background: transparent;
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 48px 20px;
-  }
-
-  .container {
-    text-align: center;
-    width: 100%;
-    max-width: 640px;
-  }
-
-  .eyebrow {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    color: #888;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 600;
-    color: #6B7D6A;
-    line-height: 1.15;
-    margin-bottom: 24px;
-  }
-
-  .link-aqui {
-    display: inline-block;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 36px;
-    font-weight: 400;
-    color: #333;
-    text-decoration: underline;
-    text-underline-offset: 8px;
-    text-decoration-color: #888;
-    text-decoration-thickness: 1px;
-    cursor: pointer;
-    transition: color 0.25s ease, text-decoration-color 0.25s ease;
-    margin-bottom: 32px;
-  }
-
-  .link-aqui:hover {
-    color: #6B7D6A;
-    text-decoration-color: #6B7D6A;
-  }
-
-  .divider {
-    width: 40px;
-    height: 1px;
-    background: #ccc;
-    margin: 0 auto 32px;
-  }
-
-  .btn-rsvp {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #6B7D6A;
-    background: transparent;
-    border: 1.5px solid #6B7D6A;
-    padding: 12px 28px;
-    border-radius: 3px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.25s ease, color 0.25s ease;
-    margin-bottom: 28px;
-  }
-
-  .btn-rsvp:hover {
-    background: #6B7D6A;
-    color: #fff;
-  }
-
-  .deadline {
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    color: #888;
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
-
-  @media (max-width: 600px) {
-    body {
-      padding: 36px 16px;
-      align-items: flex-start;
-    }
-
-    .eyebrow {
-      font-size: 10px;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-
-    .title {
-      font-size: 36px;
-      margin-bottom: 18px;
-    }
-
-    .link-aqui {
-      font-size: 28px;
-      margin-bottom: 26px;
-    }
-
-    .btn-rsvp {
-      font-size: 10px;
-      padding: 10px 22px;
-      margin-bottom: 22px;
-    }
-
-    .deadline {
-      font-size: 10px;
-    }
-  }
-</style>
-</head>
-<body>
-  <div class="container">
-    <p class="eyebrow">¿Nos acompañás?</p>
-    <h2 class="title">Confirmá tu asistencia</h2>
-
-    <a
-      class="link-aqui"
-      href="https://docs.google.com/forms/d/1cRC3V6lm6JZN2TNMj02OXxmiq2V3Lr212QyB2DUcYPU/viewform"
+      href="https://docs.google.com/forms/d/15M32yEw1gMr9bUxb0QEXrcQb02RnGXLFoQh3NcQQhWI/viewform"
       target="_blank"
-      rel="noopener noreferrer">
-      aquí
-    </a>
-
-    <div class="divider"></div>
-
-    <a
-      class="btn-rsvp"
-      href="https://docs.google.com/forms/d/1cRC3V6lm6JZN2TNMj02OXxmiq2V3Lr212QyB2DUcYPU/viewform"
-      target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+    >
       Completar formulario
     </a>
 
-    <span class="deadline">Por favor confirmá antes del 31 de octubre de 2026</span>
-  </div>
-</body>
-</html>"
-      target="_blank"
-      rel="noopener noreferrer">
-      Completar formulario
-    </a>
+    <span class="deadline">
+      Por favor confirmá antes del 31 de octubre de 2026
+    </span>
 
-    <span class="deadline">Por favor confirmá antes del 31 de octubre de 2026</span>
-  </div>
-</body>
-</html>"
-      target="_blank"
-      rel="noopener noreferrer">
-      aquí
-    </a>
-
-    <div class="divider"></div>
-
-    <a
-      class="btn-rsvp"
-      href="https://docs.google.com/forms/d/1cRC3V6lm6JZN2TNMj02OXxmiq2V3Lr212QyB2DUcYPU/viewform"
-      target="_blank"
-      rel="noopener noreferrer">
-      Completar formulario
-    </a>
-
-    <span class="deadline">Por favor confirmá antes del 31 de octubre de 2026</span>
   </div>
 </body>
 </html>
